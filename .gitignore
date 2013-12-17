@@ -27,3 +27,6 @@ obj/
 
 *.docstates
 *.dotCover
+
+packages/
+Web/App_Data/rep/
