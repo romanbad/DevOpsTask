@@ -45,11 +45,12 @@ namespace Config
 			// workaround, see https://github.com/mono/ngit/issues/14
 			Environment.SetEnvironmentVariable("HOME", home);
 			Git nativeGit;
-			if (File.Exists(rep))
+			if (Directory.Exists(rep))
 			{
 				nativeGit = Git.Open(rep);
 				nativeGit.Reset().SetMode(ResetCommand.ResetType.HARD).Call();
 				nativeGit.Fetch().Call();
+				nativeGit.Rebase().SetUpstream("origin/master").Call();
 			}
 			else
 			{
